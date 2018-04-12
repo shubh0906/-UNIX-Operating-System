@@ -19,4 +19,15 @@ typedef uint64_t off_t;
 
 typedef uint32_t pid_t;
 
+
+typedef struct registers
+{
+   	uint64_t r9,r8;
+
+	uint64_t rsi,rbp,rdx,rcx,rbx,rax,rdi;
+	
+	uint64_t int_no,err_code;
+	uint64_t rip,cs,rflags,rsp,ss;
+} registers_t;
+
 #endif

@@ -24,7 +24,8 @@
 #define ATA_STATUS_RDY  0x40 // Bit is clear when drive is spun down, or after an error. Set otherwise.
 #define ATA_STATUS_BSY  0x80 // Indicates the drive is preparing to send/receive data (wait for it to clear).
                              // In case of 'hang' (it never clears), do a software reset.
-
+#define ATA_CMD_READ_DMA_EX 0x25 
+#define ATA_CMD_WRITE_DMA_EX 0x35
 #define CMD_FIS_DEV_LBA (1U << 6)
 
 #define MAX_CMD_SLOT_CNT 32

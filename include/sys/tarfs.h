@@ -1,6 +1,7 @@
 #ifndef _TARFS_H
 #define _TARFS_H
 
+#include<dirent.h>
 extern char _binary_tarfs_start;
 extern char _binary_tarfs_end;
 
@@ -23,5 +24,11 @@ struct posix_header_ustar {
   char prefix[155];
   char pad[12];
 };
-
+void makeNode(fnode *node,int parent, char *name, uint64_t start, uint64_t size, uint64_t type);
+void parse(char *dir_path, int type, uint64_t start, uint64_t end);
+void init_tarfs();
+int oct2bin(char * size);
+void * getFile(char *filename);
+void * isDir(char *filename);
+void * isFile(char *filename);
 #endif

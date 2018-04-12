@@ -74,7 +74,7 @@ void init_gdt() {
   struct sys_segment_descriptor *sd = (struct sys_segment_descriptor*)&gdt[6]; // 7th&8th entry in GDT
   sd->sd_lolimit = sizeof(struct tss_t) - 1;
   sd->sd_lobase = ((uint64_t)&tss);
-  sd->sd_type = 9; // TSS
+  sd->sd_type = 9; //TSS
   sd->sd_dpl = 0;
   sd->sd_p = 1;
   sd->sd_hilimit = 0;
@@ -87,4 +87,9 @@ void init_gdt() {
 
 void set_tss_rsp(void *rsp) {
   tss.rsp0 = rsp;
+}
+void flush_tss(){
+	uint64_t index=0x2B;
+	__asm volatile("movq %0,%%rax;\n\t"
+            "ltr (%%rax);"::"r"(&index));
 }

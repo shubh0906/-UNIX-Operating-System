@@ -3,12 +3,17 @@
 
 #define EI_NIDENT 16
 
+#define USER_STACK_TOP    0x22222000000
+#define HEAP_START        0x08000000
+#define STACK_LIMIT       0x20000
+#define HEAP_END          0x10000000
+
 typedef uint64_t Elf64_Addr;
 typedef uint16_t Elf64_Half;
 typedef uint64_t Elf64_Lword;
 typedef uint64_t Elf64_Off;
 typedef uint32_t Elf64_Sword;
-typedef uint64_t Elf64_Sxword
+typedef uint64_t Elf64_Sxword;
 typedef uint32_t Elf64_Word;
 typedef uint64_t Elf64_Xword;
 
@@ -39,5 +44,5 @@ typedef struct {
   Elf64_Xword   p_memsz;
   Elf64_Xword   p_align;
 } Elf64_Phdr;
-
+void* loadElf(char * filename, struct pcb *task);
 #endif

@@ -1,0 +1,3 @@
+#!sbush
+echo hello
+ls
